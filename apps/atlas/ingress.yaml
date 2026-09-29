@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: atlas
+  namespace: atlas
+  labels:
+    app.kubernetes.io/name: atlas
+    app.kubernetes.io/instance: atlas
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+spec:
+  # MicroK8s ingress addon uses class "public"; use "nginx" for ingress-nginx
+  ingressClassName: public
+  rules:
+    - host: atlassukruth.duckdns.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: atlas
+                port:
+                  name: http
+  tls:
+    - secretName: atlas-tls
+      hosts:
+        - atlassukruth.duckdns.org
