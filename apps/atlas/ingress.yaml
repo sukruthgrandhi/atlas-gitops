@@ -22,6 +22,6 @@ spec:
                 port:
                   name: http
   tls:
-    - secretName: atlas-tls
+    - secretName: atlas-tls-prod
       hosts:
         - atlassukruth.duckdns.org
