@@ -9,8 +9,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
-  # MicroK8s ingress addon uses class "public"; use "nginx" for ingress-nginx
-  ingressClassName: public
+  ingressClassName: traefik
   rules:
     - host: atlassukruth.duckdns.org
       http:
